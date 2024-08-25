@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "815872512873",
+    "project_id": "library-manage-mahi",
+    "storage_bucket": "library-manage-mahi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815872512873:android:95c3f78cadaa42276663f8",
+        "android_client_info": {
+          "package_name": "com.example.elmouaddibe_examen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5nzXamfL2hy11chipK4AIgQeOaH8xIIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
