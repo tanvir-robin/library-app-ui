@@ -7,14 +7,16 @@ class Member {
   final String email;
   final String image;
   final String description;
+  final String nid;
   String? docID; // Firestore document ID
 
-  Member({
+  Member( {
     this.docID,
     required this.name,
     required this.email,
     required this.image,
     required this.description,
+    required this.nid,
   });
 
   // Convert a JSON object to a Member instance
@@ -25,6 +27,7 @@ class Member {
       email: json['email'],
       image: json['image'],
       description: json['description'],
+      nid: json['nid'],
     );
   }
 
@@ -35,6 +38,7 @@ class Member {
       'email': email,
       'image': image,
       'description': description,
+      'nid': nid,
     };
   }
 }
@@ -86,12 +90,14 @@ class _MembersScreenState extends State<MembersScreen> {
   }
 
   Future<void> _addMember(
-      String name, String email, String image, String description) async {
+      String name, String email, String image, String description, String nid) async {
     final member = Member(
       name: name,
       email: email,
       image: image,
       description: description,
+        nid: nid,
+
     );
     await FirebaseFirestore.instance.collection('members').add(member.toJson());
     loadAllMembers();
@@ -115,6 +121,7 @@ class _MembersScreenState extends State<MembersScreen> {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController imageController = TextEditingController();
     final TextEditingController descriptionController = TextEditingController();
+    final TextEditingController nidController = TextEditingController();
 
     showDialog(
       context: context,
@@ -142,6 +149,10 @@ class _MembersScreenState extends State<MembersScreen> {
                   controller: descriptionController,
                   decoration: const InputDecoration(labelText: 'Description'),
                 ),
+                TextField(
+                  controller: nidController,
+                  decoration: const InputDecoration(labelText: 'NID No.'),
+                ),
               ],
             ),
           ),
@@ -161,6 +172,7 @@ class _MembersScreenState extends State<MembersScreen> {
                       ? 'https://miro.medium.com/v2/resize:fit:600/format:webp/1*PiHoomzwh9Plr9_GA26JcA.png'
                       : imageController.text,
                   descriptionController.text,
+                  nidController.text,
                 );
                 Navigator.of(context).pop();
               },
